@@ -1,0 +1,12 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: nodejs-pipeline-run
+spec:
+  pipelineRef:
+    name: nodejs-pipeline
+  workspaces:
+    - name: source
+      persistentVolumeClaim:
+        claimName: my-source-pvc  # Replace with your PVC name
+  serviceAccountName: pipeline  # Optional: use default or custom SA
